@@ -171,4 +171,217 @@
 
             <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-lg">
                  <h2 class="text-2xl font-bold brand-dark-blue mb-4 text-center">An Entrepreneur's Guide to the New Landscape</h2>
-                 <p class="text-gray-600 mb-6 text-center max-w-3xl mx-auto">
+                 <p class="text-gray-600 mb-6 text-center max-w-3xl mx-auto">For business owners, the OBBBA creates a double-edged sword: powerful tax incentives for capital investment are coupled with significant risks from labor market instability and long-term economic uncertainty.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-teal-50 border-l-4 border-brand-teal p-4 rounded">
+                        <h3 class="font-bold text-lg text-teal-800 mb-2">Opportunities to Seize ✅</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li><b>Maximize 100% Expensing:</b> Immediately write off the full cost of new equipment, software, and facilities.</li>
+                            <li><b>Leverage Pass-Through Deduction:</b> Structure as an LLC or S-Corp to use the permanent 20% QBI deduction.</li>
+                            <li><b>Harness R&D Credits:</b> Get cash back for innovation, especially in software and tech development.</li>
+                             <li><b>Explore Opportunity Zones:</b> Defer and reduce capital gains taxes by investing in designated communities.</li>
+                        </ul>
+                    </div>
+                     <div class="bg-red-50 border-l-4 border-brand-red p-4 rounded">
+                        <h3 class="font-bold text-lg text-red-800 mb-2">Risks to Manage ❌</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                             <li><b>The Healthcare Dilemma:</b> Attracting and retaining talent is harder and more expensive with a weakened public safety net.</li>
+                             <li><b>Macroeconomic Instability:</b> Higher national debt may lead to future inflation and higher interest rates.</li>
+                             <li><b>Sector Headwinds:</b> Clean energy startups face a much tougher path to compete with subsidized fossil fuels.</li>
+                             <li><b>Consumer Base Strain:</b> Businesses reliant on low-to-middle income consumers may see reduced spending power.</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="border-t-2 border-gray-200 pt-6">
+                    <h3 class="text-xl font-bold brand-dark-blue mb-4 text-center">✅ Strategic Checklist for Founders</h3>
+                    <p class="text-gray-600 mb-6 text-center max-w-3xl mx-auto">Aspiring entrepreneurs should consider these key points when planning a new venture in the post-OBBBA environment.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-brand-teal text-white flex items-center justify-center mr-4 mt-1">✓</div>
+                            <div><span class="font-bold">Entity Selection:</span> Strongly consider a pass-through structure (LLC, S-Corp) to be eligible for the permanent 20% Qualified Business Income (QBI) deduction.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-brand-teal text-white flex items-center justify-center mr-4 mt-1">✓</div>
+                            <div><span class="font-bold">Capital Planning:</span> Time major equipment and property purchases to maximize the 100% immediate expensing provision and improve early-year cash flow.</div>
+                        </li>
+                        <li class="flex items-start">
+                             <div class="flex-shrink-0 h-6 w-6 rounded-full bg-brand-teal text-white flex items-center justify-center mr-4 mt-1">✓</div>
+                            <div><span class="font-bold">HR Strategy:</span> Proactively address the healthcare challenge. Budget for higher-cost private insurance or increased salaries to help attract and retain talent.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-brand-teal text-white flex items-center justify-center mr-4 mt-1">✓</div>
+                            <div><span class="font-bold">Risk Management:</span> Build financial models that account for potentially higher interest rates and inflation due to the increased national debt.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 pt-8 border-t border-gray-300">
+            <p class="text-gray-600">This infographic visualizes data from analyses by the CBO, PWBM, and Tax Policy Center on the "One Big Beautiful Bill Act" of 2025.</p>
+            <p class="text-sm text-gray-400 mt-2">Generated with AI assistance based on user-specified analysis requirements. Neither Mermaid JS nor SVG were used.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const brandColors = {
+            darkBlue: '#004369',
+            teal: '#01949A',
+            red: '#DB1F48',
+            yellow: '#F8B229',
+            beige: '#E5DDC8',
+            gray: '#6B7280'
+        };
+
+        const tooltipPlugin = {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                            return label.join(' ');
+                        } else {
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        function wrapLabels(label, maxWidth) {
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + words[i].length + 1 < maxWidth) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+
+        new Chart(document.getElementById('fiscalImpactChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Tax Cuts', 'New Spending (Defense/Border)', 'Social Program Cuts', 'Net Deficit Increase'],
+                datasets: [{
+                    label: 'Impact in Trillions of USD',
+                    data: [4.5, 0.32, -1.356, 3.6],
+                     backgroundColor: [
+                        brandColors.red,
+                        brandColors.yellow,
+                        brandColors.teal,
+                        brandColors.darkBlue
+                    ],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipPlugin,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: '10-Year Budgetary Impact (in Trillions)',
+                        font: { size: 16 }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value + 'T';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('incomeImpactChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Lowest 20%', 'Second 20%', 'Middle 20%', 'Fourth 20%', 'Top 20%', 'Top 1%'],
+                datasets: [{
+                    label: 'Net Change in Annual Income',
+                    data: [-1600, -500, 1500, 3400, 10900, 65000],
+                    backgroundColor: (context) => {
+                        const value = context.dataset.data[context.dataIndex];
+                        return value < 0 ? brandColors.red : brandColors.teal;
+                    },
+                    borderColor: '#ffffff',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                     ...tooltipPlugin,
+                    legend: {
+                        display: false
+                    },
+                     title: {
+                        display: true,
+                        text: 'Net Annual Change in After-Tax Income by Quintile',
+                         font: { size: 16 }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('uninsuredChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Projected to Lose Insurance', 'Remaining Population'],
+                datasets: [{
+                    data: [16000000, 318000000], 
+                    backgroundColor: [brandColors.red, brandColors.darkBlue],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipPlugin,
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Projected Loss of Health Insurance Coverage',
+                        font: { size: 16 }
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+    </script>
+
+</body>
+</html>
