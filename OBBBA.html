@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: The "One Big Beautiful Bill Act" of 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #E5DDC8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .brand-dark-blue { color: #004369; }
+        .brand-teal { color: #01949A; }
+        .brand-red { color: #DB1F48; }
+        .brand-yellow { color: #F8B229; }
+        .bg-brand-dark-blue { background-color: #004369; }
+        .bg-brand-teal { background-color: #01949A; }
+        .bg-brand-red { background-color: #DB1F48; }
+        .bg-brand-yellow { background-color: #F8B229; }
+        .bg-brand-beige { background-color: #E5DDC8; }
+        .border-brand-dark-blue { border-color: #004369; }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #01949A;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-brand-beige text-gray-800">
+
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+        <div class="bg-white rounded-lg shadow-2xl p-8 max-w-2xl w-full m-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modal-title" class="text-2xl font-bold brand-dark-blue"></h3>
+                <button id="close-modal" class="text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
+            </div>
+            <div id="modal-content" class="text-gray-700 max-h-[70vh] overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black brand-dark-blue mb-2">The "One Big Beautiful Bill Act"</h1>
+            <p class="text-lg md:text-xl text-gray-600">A Visual Analysis of its Economic & Social Impact</p>
+        </header>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 text-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <p class="text-5xl font-black brand-red">+$3.6T</p>
+                <p class="text-gray-600 mt-2">Projected 10-Year Increase in National Deficit</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <p class="text-5xl font-black brand-red">16 Million</p>
+                <p class="text-gray-600 mt-2">Americans Projected to Become Uninsured</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <p class="text-5xl font-black brand-teal">80%</p>
+                <p class="text-gray-600 mt-2">of Total Tax Benefits Go to the Top 10% of Earners</p>
+            </div>
+        </section>
+
+        <main class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold brand-dark-blue mb-4 text-center">The Fiscal Equation: A Massive Rebalancing Act</h2>
+                <p class="text-gray-600 mb-6 text-center max-w-3xl mx-auto">The OBBBA is built on a foundation of massive tax cuts and new defense spending, paid for by deep cuts to social programs and a substantial increase in federal borrowing. This chart breaks down the key financial components over the next decade.</p>
+                <div class="chart-container h-96 max-h-[500px]">
+                    <canvas id="fiscalImpactChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold brand-dark-blue mb-4 text-center">The Human Impact: Who Gains and Who Loses?</h2>
+                 <p class="text-gray-600 mb-6 text-center">Non-partisan analysis reveals a starkly regressive impact. When tax changes are combined with benefit cuts, the legislation results in a net financial loss for the poorest households, while the wealthiest see significant gains. </p>
+                <div class="chart-container">
+                    <canvas id="incomeImpactChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold brand-dark-blue mb-4 text-center">The Healthcare Toll: A Shrinking Safety Net</h2>
+                <p class="text-gray-600 mb-6 text-center">The bill's largest spending cuts target Medicaid, leading to a projected loss of health insurance for millions. This not only affects individual well-being but also places financial strain on hospitals and the broader economy.</p>
+                <div class="chart-container">
+                    <canvas id="uninsuredChart"></canvas>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold brand-dark-blue mb-4 text-center">✨ Ask Gemini: How Does This Bill Affect Me?</h2>
+                <p class="text-gray-600 mb-6 text-center max-w-3xl mx-auto">Enter your details below to get a personalized analysis of how the OBBBA could impact your finances and healthcare, generated by AI.</p>
+                <div class="max-w-xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div>
+                            <label for="annual-income" class="block text-sm font-medium text-gray-700">Annual Income ($)</label>
+                            <input type="number" id="annual-income" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-teal focus:ring-brand-teal" placeholder="55000">
+                        </div>
+                        <div>
+                            <label for="family-size" class="block text-sm font-medium text-gray-700">Family Size</label>
+                            <input type="number" id="family-size" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-teal focus:ring-brand-teal" placeholder="3">
+                        </div>
+                        <div>
+                            <label for="state" class="block text-sm font-medium text-gray-700">State</label>
+                            <input type="text" id="state" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-teal focus:ring-brand-teal" placeholder="Ohio">
+                        </div>
+                    </div>
+                    <button id="get-impact-analysis" class="w-full bg-brand-teal hover:bg-brand-dark-blue text-white font-bold py-3 px-4 rounded-lg shadow-md transition duration-300">
+                        ✨ Get My Personal Impact Analysis
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold brand-dark-blue mb-4 text-center">Sector Shake-up: The Bill's Winners and Losers</h2>
+                <p class="text-gray-600 mb-6 text-center max-w-3xl mx-auto">The legislation's targeted tax breaks and spending priorities create a clear divide across the U.S. economy, boosting legacy industries while creating significant headwinds for the clean energy sector.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="border-4 border-brand-teal rounded-lg p-4">
+                        <h3 class="text-2xl font-bold brand-teal text-center mb-4">WINNERS ↑</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center"><span class="text-2xl mr-3">⛽️</span> <div><span class="font-bold">Fossil Fuel Industry:</span> Receives new subsidies and benefits from the repeal of green energy credits.</div></li>
+                            <li class="flex items-center"><span class="text-2xl mr-3">🛡️</span> <div><span class="font-bold">Defense & Security:</span> Gains from over $320 billion in new spending on military and border enforcement.</div></li>
+                            <li class="flex items-center"><span class="text-2xl mr-3">🏭</span> <div><span class="font-bold">Heavy Manufacturing:</span> Benefits from permanent 100% bonus depreciation for new equipment and facilities.</div></li>
+                            <li class="flex items-center"><span class="text-2xl mr-3">🚜</span> <div><span class="font-bold">Agriculture:</span> Supported by higher farm safety net spending and a permanent estate tax exemption.</div></li>
+                        </ul>
+                    </div>
+                    <div class="border-4 border-brand-red rounded-lg p-4">
+                        <h3 class="text-2xl font-bold brand-red text-center mb-4">LOSERS ↓</h3>
+                         <ul class="space-y-3">
+                            <li class="flex items-center"><span class="text-2xl mr-3">☀️</span> <div><span class="font-bold">Renewable Energy:</span> Faces a "devastating blow" from the accelerated phase-out of wind, solar, and EV tax credits.</div></li>
+                             <li class="flex items-center"><span class="text-2xl mr-3">🏥</span> <div><span class="font-bold">Healthcare Providers:</span> Particularly rural hospitals, face financial strain from the increase in uninsured patients.</div></li>
+                             <li class="flex items-center"><span class="text-2xl mr-3"> SMALL BIZ </span> <div><span class="font-bold">Labor-Intensive Small Biz:</span> Face a tougher hiring market due to healthcare instability for employees.</div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-lg">
+                 <h2 class="text-2xl font-bold brand-dark-blue mb-4 text-center">An Entrepreneur's Guide to the New Landscape</h2>
+                 <p class="text-gray-600 mb-6 text-center max-w-3xl mx-auto">For business owners, the OBBBA creates a double-edged sword: powerful tax incentives for capital investment are coupled with significant risks from labor market instability and long-term economic uncertainty.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-teal-50 border-l-4 border-brand-teal p-4 rounded">
+                        <h3 class="font-bold text-lg text-teal-800 mb-2">Opportunities to Seize ✅</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li><b>Maximize 100% Expensing:</b> Immediately write off the full cost of new equipment, software, and facilities.</li>
+                            <li><b>Leverage Pass-Through Deduction:</b> Structure as an LLC or S-Corp to use the permanent 20% QBI deduction.</li>
+                            <li><b>Harness R&D Credits:</b> Get cash back for innovation, especially in software and tech development.</li>
+                             <li><b>Explore Opportunity Zones:</b> Defer and reduce capital gains taxes by investing in designated communities.</li>
+                        </ul>
+                    </div>
+                     <div class="bg-red-50 border-l-4 border-brand-red p-4 rounded">
+                        <h3 class="font-bold text-lg text-red-800 mb-2">Risks to Manage ❌</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                             <li><b>The Healthcare Dilemma:</b> Attracting and retaining talent is harder and more expensive with a weakened public safety net.</li>
+                             <li><b>Macroeconomic Instability:</b> Higher national debt may lead to future inflation and higher interest rates.</li>
+                             <li><b>Sector Headwinds:</b> Clean energy startups face a much tougher path to compete with subsidized fossil fuels.</li>
+                             <li><b>Consumer Base Strain:</b> Businesses reliant on low-to-middle income consumers may see reduced spending power.</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="border-t-2 border-gray-200 pt-6">
+                    <h3 class="text-xl font-bold brand-dark-blue mb-4 text-center">✨ Ask Gemini: Brainstorm Business Ideas</h3>
+                    <p class="text-gray-600 mb-6 text-center max-w-3xl mx-auto">Select an industry to generate AI-powered business ideas tailored to the new economic reality of the OBBBA.</p>
+                    <div class="max-w-xl mx-auto">
+                        <label for="industry-select" class="block text-sm font-medium text-gray-700">Select an Industry</label>
+                        <select id="industry-select" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-teal focus:ring-brand-teal">
+                            <option>Energy</option>
+                            <option>Healthcare</option>
+                            <option>Manufacturing</option>
+                            <option>Financial Services</option>
+                            <option>Construction & Real Estate</option>
+                        </select>
+                        <button id="get-business-ideas" class="mt-4 w-full bg-brand-dark-blue hover:bg-brand-teal text-white font-bold py-3 px-4 rounded-lg shadow-md transition duration-300">
+                           ✨ Generate Business Ideas
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="text-center mt-12 pt-8 border-t border-gray-300">
+            <p class="text-gray-600">This infographic visualizes data from analyses by the CBO, PWBM, and Tax Policy Center on the "One Big Beautiful Bill Act" of 2025. AI-powered features use the Gemini API.</p>
+            <p class="text-sm text-gray-400 mt-2">Generated by Canvas Infographics. Neither Mermaid JS nor SVG were used in this output.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const brandColors = {
+            darkBlue: '#004369',
+            teal: '#01949A',
+            red: '#DB1F48',
+            yellow: '#F8B229',
+            beige: '#E5DDC8',
+            gray: '#6B7280'
+        };
+
+        const tooltipPlugin = {
+            tooltip: {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                            return label.join(' ');
+                        } else {
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+        function wrapLabels(label, maxWidth) {
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + words[i].length + 1 < maxWidth) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+
+        new Chart(document.getElementById('fiscalImpactChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Tax Cuts', 'New Spending (Defense/Border)', 'Social Program Cuts', 'Net Deficit Increase'],
+                datasets: [{
+                    label: 'Impact in Trillions of USD',
+                    data: [4.5, 0.32, -1.356, 3.6],
+                     backgroundColor: [
+                        brandColors.red,
+                        brandColors.yellow,
+                        brandColors.teal,
+                        brandColors.darkBlue
+                    ],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipPlugin,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: '10-Year Budgetary Impact (in Trillions)',
+                        font: { size: 16 }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value + 'T';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('incomeImpactChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Lowest 20%', 'Second 20%', 'Middle 20%', 'Fourth 20%', 'Top 20%', 'Top 1%'],
+                datasets: [{
+                    label: 'Net Change in Annual Income',
+                    data: [-1600, -500, 1500, 3400, 10900, 65000],
+                    backgroundColor: (context) => {
+                        const value = context.dataset.data[context.dataIndex];
+                        return value < 0 ? brandColors.red : brandColors.teal;
+                    },
+                    borderColor: '#ffffff',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                     ...tooltipPlugin,
+                    legend: {
+                        display: false
+                    },
+                     title: {
+                        display: true,
+                        text: 'Net Annual Change in After-Tax Income by Quintile',
+                         font: { size: 16 }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('uninsuredChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Projected to Lose Insurance', 'Remaining Population'],
+                datasets: [{
+                    data: [16000000, 318000000], 
+                    backgroundColor: [brandColors.red, brandColors.darkBlue],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipPlugin,
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Projected Loss of Health Insurance Coverage',
+                        font: { size: 16 }
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+
+        const modal = document.getElementById('modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalContent = document.getElementById('modal-content');
+
+        function showModal(title, content) {
+            modalTitle.textContent = title;
+            modalContent.innerHTML = content;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function hideModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        closeModalBtn.addEventListener('click', hideModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                hideModal();
+            }
+        });
+        
+        async function callGeminiAPI(prompt) {
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{
+                    role: "user",
+                    parts: [{ text: prompt }]
+                }]
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API call failed with status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    return result.candidates[0].content.parts[0].text;
+                } else {
+                    console.error("Unexpected API response structure:", result);
+                    return "Error: Could not generate a response. The API returned an unexpected format.";
+                }
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                return `Error: Could not connect to the AI service. Please check your connection and try again. Details: ${error.message}`;
+            }
+        }
+
+        document.getElementById('get-impact-analysis').addEventListener('click', async () => {
+            const income = document.getElementById('annual-income').value;
+            const familySize = document.getElementById('family-size').value;
+            const state = document.getElementById('state').value;
+
+            if (!income || !familySize || !state) {
+                showModal('Missing Information', '<p>Please fill out all fields to get your personalized analysis.</p>');
+                return;
+            }
+
+            const prompt = `
+                Based on the known provisions of the "One Big Beautiful Bill Act" (OBBBA), provide a personalized impact analysis for an individual with the following profile:
+                - Annual Household Income: $${income}
+                - Family Size: ${familySize}
+                - State of Residence: ${state}
+
+                Key Provisions of the OBBBA to consider:
+                - Tax Impact: The bill provides a 20% deduction for pass-through income and significant tax cuts for high earners. The bottom 40% of earners see a net financial loss when benefit cuts are included. 80% of tax benefits go to the top 10%.
+                - Healthcare Impact: The bill cuts Medicaid by over $1 trillion, leading to 16 million people becoming uninsured. This disproportionately affects low-income families and states that expanded Medicaid.
+                - Economic Impact: The bill boosts fossil fuels, defense, and manufacturing through subsidies and tax breaks. It creates headwinds for renewable energy. The national deficit is projected to increase by $3.6 trillion, which could lead to future inflation or higher interest rates.
+
+                Please structure your response in markdown format with the following sections:
+                ### Overall Summary
+                A brief, one-paragraph summary of the net effect (positive, negative, or mixed).
+                ### Tax Impact
+                Explain how their income level is likely to be affected by the tax changes.
+                ### Healthcare & Social Safety Net
+                Analyze their potential risk regarding healthcare coverage changes, especially considering their state and income.
+                ### Economic Outlook
+                Briefly touch on how the broader economic shifts might affect their job security or cost of living.
+            `;
+            
+            showModal('✨ Generating Your Analysis...', '<div class="loader"></div><p class="text-center">Please wait while our AI analyzes your profile...</p>');
+            const response = await callGeminiAPI(prompt);
+            showModal('✨ Your Personal Impact Analysis', response.replace(/\n/g, '<br>'));
+        });
+
+        document.getElementById('get-business-ideas').addEventListener('click', async () => {
+            const industry = document.getElementById('industry-select').value;
+
+            const prompt = `
+                Analyze the economic landscape created by the "One Big Beautiful Bill Act" (OBBBA) and brainstorm 3-5 specific, actionable business ideas for the "${industry}" sector.
+
+                For context, here are the key economic shifts from the OBBBA:
+                - Opportunities: The bill heavily favors fossil fuels, defense/security, and heavy manufacturing through subsidies and 100% bonus depreciation. It also makes the 20% pass-through (QBI) deduction permanent and supports R&D credits and Opportunity Zones.
+                - Risks & Headwinds: The bill creates major challenges for the renewable energy sector by phasing out tax credits. It introduces labor market instability due to healthcare cuts (16 million uninsured). The rising national debt could lead to long-term inflation and higher interest rates, and lower/middle-class consumers may have reduced spending power.
+
+                For each business idea, provide:
+                1.  **Business Name/Concept:** A catchy name or clear concept title.
+                2.  **The Pitch:** A one-sentence pitch explaining the business.
+                3.  **Why It Works Under OBBBA:** A brief explanation of how the business specifically leverages an OBBBA opportunity or mitigates a risk.
+
+                Please format the response in markdown, with each idea as a distinct section.
+            `;
+
+            showModal('✨ Generating Business Ideas...', '<div class="loader"></div><p class="text-center">Please wait while our AI brainstorms opportunities...</p>');
+            const response = await callGeminiAPI(prompt);
+            showModal(`✨ Business Ideas for ${industry}`, response.replace(/\n/g, '<br>'));
+        });
+
+    </script>
+
+</body>
+</html>
