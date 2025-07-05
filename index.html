@@ -89,59 +89,87 @@
                     <canvas id="uninsuredChart"></canvas>
                 </div>
             </div>
-            
+
             <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-bold brand-dark-blue mb-4 text-center">A Deeper Look: Net Impact by Income Level</h2>
-                <p class="text-gray-600 mb-6 text-center max-w-3xl mx-auto">This table, based on CBO and PWBM data, breaks down the projected annual financial impact in 2030. It combines tax changes with cuts to government transfers like Medicaid and SNAP to show the true net effect on households.</p>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Income Quintile</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Avg. Tax Change</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Avg. Benefit Change</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Net Annual Impact</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap font-medium">Lowest 20%</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-teal-600">+$150</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-red-600">-$1,750</td>
-                                <td class="px-6 py-4 whitespace-nowrap font-bold text-red-600">-$1,600</td>
-                            </tr>
-                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap font-medium">Second 20%</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-teal-600">+$500</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-red-600">-$1,000</td>
-                                <td class="px-6 py-4 whitespace-nowrap font-bold text-red-600">-$500</td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap font-medium">Middle 20%</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-teal-600">+$1,750</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-red-600">-$250</td>
-                                <td class="px-6 py-4 whitespace-nowrap font-bold text-teal-600">+$1,500</td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap font-medium">Fourth 20%</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-teal-600">+$3,500</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-red-600">-$100</td>
-                                <td class="px-6 py-4 whitespace-nowrap font-bold text-teal-600">+$3,400</td>
-                            </tr>
-                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap font-medium">Top 20%</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-teal-600">+$10,950</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-red-600">-$50</td>
-                                <td class="px-6 py-4 whitespace-nowrap font-bold text-teal-600">+$10,900</td>
-                            </tr>
-                             <tr class="bg-gray-50">
-                                <td class="px-6 py-4 whitespace-nowrap font-bold">Top 1%</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-teal-600 font-bold">+$65,000</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-gray-500">$0</td>
-                                <td class="px-6 py-4 whitespace-nowrap font-extrabold text-teal-700">+$65,000</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <h2 class="text-2xl font-bold brand-dark-blue mb-4 text-center">The New Cost of Getting Sick: A Financial Cliff</h2>
+                <p class="text-gray-600 mb-6 text-center max-w-3xl mx-auto">For the 16 million people projected to lose coverage, the financial consequences of a single medical event can be catastrophic. Here’s a look at the starkly different realities of healthcare costs.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-teal-50 border-t-4 border-brand-teal p-4 rounded-lg">
+                        <h3 class="font-bold text-lg text-teal-800 mb-2">Medicaid Coverage</h3>
+                        <p class="text-4xl font-black brand-teal">$0 - $35</p>
+                        <p class="text-sm text-gray-600">Per service/prescription. Annual out-of-pocket costs are capped at 5% of family income.</p>
+                    </div>
+                     <div class="bg-yellow-50 border-t-4 border-brand-yellow p-4 rounded-lg">
+                        <h3 class="font-bold text-lg text-yellow-800 mb-2">Private Insurance</h3>
+                        <p class="text-4xl font-black brand-yellow">$6,300+</p>
+                        <p class="text-sm text-gray-600">Average annual employee share for family coverage, PLUS thousands more in deductibles before coverage kicks in.</p>
+                    </div>
+                     <div class="bg-red-50 border-t-4 border-brand-red p-4 rounded-lg">
+                        <h3 class="font-bold text-lg text-red-800 mb-2">Uninsured</h3>
+                        <p class="text-4xl font-black brand-red">$2,600+</p>
+                        <p class="text-sm text-gray-600">For a SINGLE non-critical ER visit. A major medical event can easily lead to bankruptcy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold brand-dark-blue mb-4 text-center">Impact on Wages & Salaries</h2>
+                <p class="text-gray-600 mb-6 text-center max-w-3xl mx-auto">The bill creates competing pressures on American paychecks. While investment incentives could boost wages in some sectors over the long term, the immediate impact on the broader labor market is less certain.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-teal-50 border-l-4 border-brand-teal p-4 rounded">
+                        <h3 class="font-bold text-lg text-teal-800 mb-2">Potential for Wage Growth 📈</h3>
+                        <p class="text-gray-700">The bill's deep corporate tax cuts and 100% expensing provisions are designed to incentivize business investment. Economic theory suggests that over several years, this could lead to higher productivity and increased demand for skilled labor, potentially driving up wages in sectors like manufacturing, tech, and energy.</p>
+                    </div>
+                     <div class="bg-red-50 border-l-4 border-brand-red p-4 rounded">
+                        <h3 class="font-bold text-lg text-red-800 mb-2">Downward Pressure on Paychecks 📉</h3>
+                        <p class="text-gray-700">For many workers, especially in lower-wage jobs, the loss of benefits like affordable healthcare could effectively act as a pay cut. Increased financial insecurity weakens workers' bargaining power, and businesses may face less pressure to increase wages to attract talent if the public safety net is smaller.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold brand-dark-blue mb-4 text-center">Legislative Showdown: How OBBBA Compares</h2>
+                <p class="text-gray-600 mb-6 text-center max-w-3xl mx-auto">This bill represents a sharp departure from the key legislation of the previous administration. Here's how its goals and projected impacts stack up against the Inflation Reduction Act and the Infrastructure Investment and Jobs Act.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- OBBBA Card -->
+                    <div class="border-2 border-gray-300 rounded-lg p-4 flex flex-col">
+                        <h3 class="text-xl font-bold brand-dark-blue mb-3 text-center">"One Big Beautiful Bill Act" (2025)</h3>
+                        <div class="space-y-3 flex-grow">
+                            <p><span class="font-bold">Primary Goal:</span> Broad tax cuts & deregulation.</p>
+                            <p><span class="font-bold">Key Investments:</span> Fossil fuels, defense, border security.</p>
+                            <p><span class="font-bold">Key Social Impact:</span> Projects 16 million will lose health insurance.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t-2">
+                             <p class="text-lg font-bold text-center">10-Year Deficit Impact</p>
+                             <p class="text-3xl font-black brand-red text-center">+$3.6 Trillion</p>
+                        </div>
+                    </div>
+                    <!-- IRA Card -->
+                    <div class="border-2 border-gray-300 rounded-lg p-4 flex flex-col">
+                        <h3 class="text-xl font-bold brand-dark-blue mb-3 text-center">Inflation Reduction Act (2022)</h3>
+                        <div class="space-y-3 flex-grow">
+                            <p><span class="font-bold">Primary Goal:</span> Climate change, health costs, deficit reduction.</p>
+                            <p><span class="font-bold">Key Investments:</span> Clean energy, IRS enforcement, drug price negotiation.</p>
+                            <p><span class="font-bold">Key Social Impact:</span> Extended ACA subsidies, capped senior drug costs.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t-2">
+                             <p class="text-lg font-bold text-center">10-Year Deficit Impact</p>
+                             <p class="text-3xl font-black brand-teal text-center">-$238 Billion</p>
+                        </div>
+                    </div>
+                    <!-- IIJA Card -->
+                    <div class="border-2 border-gray-300 rounded-lg p-4 flex flex-col">
+                        <h3 class="text-xl font-bold brand-dark-blue mb-3 text-center">Infrastructure Act (2021)</h3>
+                        <div class="space-y-3 flex-grow">
+                            <p><span class="font-bold">Primary Goal:</span> Modernize physical infrastructure.</p>
+                            <p><span class="font-bold">Key Investments:</span> Roads, bridges, broadband, water, EV chargers.</p>
+                            <p><span class="font-bold">Key Social Impact:</span> Projected to support ~770k jobs per year.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t-2">
+                             <p class="text-lg font-bold text-center">10-Year Deficit Impact</p>
+                             <p class="text-3xl font-black brand-red text-center">+$256 Billion</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -166,53 +194,6 @@
                              <li class="flex items-center"><span class="text-2xl mr-3"> SMALL BIZ </span> <div><span class="font-bold">Labor-Intensive Small Biz:</span> Face a tougher hiring market due to healthcare instability for employees.</div></li>
                         </ul>
                     </div>
-                </div>
-            </div>
-
-            <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-lg">
-                 <h2 class="text-2xl font-bold brand-dark-blue mb-4 text-center">An Entrepreneur's Guide to the New Landscape</h2>
-                 <p class="text-gray-600 mb-6 text-center max-w-3xl mx-auto">For business owners, the OBBBA creates a double-edged sword: powerful tax incentives for capital investment are coupled with significant risks from labor market instability and long-term economic uncertainty.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div class="bg-teal-50 border-l-4 border-brand-teal p-4 rounded">
-                        <h3 class="font-bold text-lg text-teal-800 mb-2">Opportunities to Seize ✅</h3>
-                        <ul class="list-disc list-inside text-gray-700 space-y-1">
-                            <li><b>Maximize 100% Expensing:</b> Immediately write off the full cost of new equipment, software, and facilities.</li>
-                            <li><b>Leverage Pass-Through Deduction:</b> Structure as an LLC or S-Corp to use the permanent 20% QBI deduction.</li>
-                            <li><b>Harness R&D Credits:</b> Get cash back for innovation, especially in software and tech development.</li>
-                             <li><b>Explore Opportunity Zones:</b> Defer and reduce capital gains taxes by investing in designated communities.</li>
-                        </ul>
-                    </div>
-                     <div class="bg-red-50 border-l-4 border-brand-red p-4 rounded">
-                        <h3 class="font-bold text-lg text-red-800 mb-2">Risks to Manage ❌</h3>
-                        <ul class="list-disc list-inside text-gray-700 space-y-1">
-                             <li><b>The Healthcare Dilemma:</b> Attracting and retaining talent is harder and more expensive with a weakened public safety net.</li>
-                             <li><b>Macroeconomic Instability:</b> Higher national debt may lead to future inflation and higher interest rates.</li>
-                             <li><b>Sector Headwinds:</b> Clean energy startups face a much tougher path to compete with subsidized fossil fuels.</li>
-                             <li><b>Consumer Base Strain:</b> Businesses reliant on low-to-middle income consumers may see reduced spending power.</li>
-                        </ul>
-                    </div>
-                </div>
-                 <div class="border-t-2 border-gray-200 pt-6">
-                    <h3 class="text-xl font-bold brand-dark-blue mb-4 text-center">✅ Strategic Checklist for Founders</h3>
-                    <p class="text-gray-600 mb-6 text-center max-w-3xl mx-auto">Aspiring entrepreneurs should consider these key points when planning a new venture in the post-OBBBA environment.</p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-brand-teal text-white flex items-center justify-center mr-4 mt-1">✓</div>
-                            <div><span class="font-bold">Entity Selection:</span> Strongly consider a pass-through structure (LLC, S-Corp) to be eligible for the permanent 20% Qualified Business Income (QBI) deduction.</div>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-brand-teal text-white flex items-center justify-center mr-4 mt-1">✓</div>
-                            <div><span class="font-bold">Capital Planning:</span> Time major equipment and property purchases to maximize the 100% immediate expensing provision and improve early-year cash flow.</div>
-                        </li>
-                        <li class="flex items-start">
-                             <div class="flex-shrink-0 h-6 w-6 rounded-full bg-brand-teal text-white flex items-center justify-center mr-4 mt-1">✓</div>
-                            <div><span class="font-bold">HR Strategy:</span> Proactively address the healthcare challenge. Budget for higher-cost private insurance or increased salaries to help attract and retain talent.</div>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="flex-shrink-0 h-6 w-6 rounded-full bg-brand-teal text-white flex items-center justify-center mr-4 mt-1">✓</div>
-                            <div><span class="font-bold">Risk Management:</span> Build financial models that account for potentially higher interest rates and inflation due to the increased national debt.</div>
-                        </li>
-                    </ul>
                 </div>
             </div>
 
@@ -250,24 +231,6 @@
                 }
             }
         };
-
-        function wrapLabels(label, maxWidth) {
-            const words = label.split(' ');
-            let lines = [];
-            let currentLine = words[0];
-
-            for (let i = 1; i < words.length; i++) {
-                if (currentLine.length + words[i].length + 1 < maxWidth) {
-                    currentLine += ' ' + words[i];
-                } else {
-                    lines.push(currentLine);
-                    currentLine = words[i];
-                }
-            }
-            lines.push(currentLine);
-            return lines;
-        }
-
 
         new Chart(document.getElementById('fiscalImpactChart'), {
             type: 'bar',
